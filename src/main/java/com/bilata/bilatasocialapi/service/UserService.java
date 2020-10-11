@@ -13,10 +13,10 @@ public class UserService {
 	
 	@Autowired
 	UserRepository userRepository;
-//	
-//	public static User getUserByUserName(String name) {
-////		return UserRepository.findByUsername(name);
-//	}
+	
+	public static User getUserByUserName(String name) {
+		return userRepository.findByUsername(name);
+	}
 	
 	public List<User> findByUsername(String username) {
 		
