@@ -14,7 +14,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public static User getUserByUserName(String name) {
+	public  List<User> getUserByUserName(String name) {
 		return userRepository.findByUsername(name);
 	}
 	
