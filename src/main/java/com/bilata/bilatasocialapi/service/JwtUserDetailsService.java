@@ -12,6 +12,7 @@ import com.bilata.bilatasocialapi.model.User;
 import com.bilata.bilatasocialapi.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -23,10 +24,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = UserRepository.findByUsername(username);
-		if (user == null) {
+		List<User>  users = userDao.findByUsername(username);
+		if (users == null) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
+		User user = users.get(0);
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				new ArrayList<>());
 	}
