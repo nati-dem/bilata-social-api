@@ -8,5 +8,5 @@ import com.bilata.bilatasocialapi.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-	List <User> findByUsername(String username);
+	User findByUsername(String username);
 }

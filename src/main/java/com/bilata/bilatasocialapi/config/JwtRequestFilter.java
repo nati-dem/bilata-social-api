@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.bilata.bilatasocialapi.service.JwtUserDetailsService;
+import com.bilata.bilatasocialapi.service.AuthService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -23,7 +23,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 	@Autowired
-	private JwtUserDetailsService jwtUserDetailsService;
+	private AuthService jwtUserDetailsService;
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
