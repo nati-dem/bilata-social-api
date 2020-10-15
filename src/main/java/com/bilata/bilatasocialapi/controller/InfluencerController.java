@@ -7,15 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bilata.bilatasocialapi.model.SignUpRequest;
 import com.bilata.bilatasocialapi.model.User;
-import com.bilata.bilatasocialapi.service.AuthService;
 import com.bilata.bilatasocialapi.service.UserService;
 
 @RestController
@@ -40,5 +38,17 @@ public class InfluencerController {
 			return new ResponseEntity<>("User not found!", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(users, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/api/users/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("id") int id) {
+
+		List<User> followers = userService.displayByUserId(id);
+
+		if (followers == null || followers.isEmpty()) {
+
+			return new ResponseEntity<>("User not found!", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(followers, HttpStatus.OK);
 	}
 }

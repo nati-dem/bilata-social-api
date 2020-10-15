@@ -3,10 +3,6 @@ package com.bilata.bilatasocialapi.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.bilata.bilatasocialapi.model.User;
@@ -23,8 +19,11 @@ public class UserService {
 	}
 
 	public List<User> findByUsername(String username) {
-
 		return (List<User>) userRepository.findByUsername(username);
+	}
+	
+	public List<User> displayByUserId(int id) {
+		return (List<User>) userRepository.findByUserId(id);
 	}
 
 }
