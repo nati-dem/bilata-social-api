@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.bilata.bilatasocialapi.model.Follower;
 import com.bilata.bilatasocialapi.model.User;
 import com.bilata.bilatasocialapi.service.UserService;
 
@@ -40,11 +42,6 @@ public class InfluencerController {
 		}
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
-<<<<<<< HEAD
-	
-	@RequestMapping(value = "/api/influencers/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-=======
-
 	@RequestMapping(value = "/api/clients/{company_name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<User>> getClientByName(@PathVariable("company_name") String company_name) {
         
@@ -57,8 +54,7 @@ public class InfluencerController {
     }
 
 
-	@RequestMapping(value = "/api/users/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
->>>>>>> 9e95474644966a8bfb96e52efc733d71b3f6ef9e
+@RequestMapping(value = "/api/influencers/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("id") int id) {
 
 		List<Follower> followers = userService.displayByUserId(id);

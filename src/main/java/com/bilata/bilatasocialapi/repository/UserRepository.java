@@ -12,8 +12,9 @@ import com.bilata.bilatasocialapi.model.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	User findByUsername(String username);
 
-	@Query("SELECT c FROM clients c WHERE c.company_name = :company_name")
+	@Query("SELECT u.*, c.* FROM clients c JOIN users u ON u.id = c.user_id WHERE c.company_name = :company_name")
 	public List<User> companyName(@Param("company_name") String company_name);
+	
 	@Query
 	List<User> findByUserId(@Param(value = "userId") int id);
 }
