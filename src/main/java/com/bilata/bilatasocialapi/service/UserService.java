@@ -22,10 +22,10 @@ public class UserService {
 		return (List<User>) userRepository.findByUsername(username);
 	}
 
-	
-	public List<User> displayByUserId(int id) {
-		return (List<User>) userRepository.findByUserId(id);
-	}
+//	
+//	public List<User> displayByUserId(int id) {
+//		return (List<User>) userRepository.findByUserId(id);
+//	}
 
 	public List<User> findByCompanyName(String company_name) {
 
