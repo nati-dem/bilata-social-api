@@ -51,7 +51,7 @@ public class InfluencerController {
 	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("userId") int userId) {
 
 		List<Follower> followers = followerService.displayByUserId(userId);
-		// follower model required - influencer service - influencer rep
+		// follower model required - influencer service - influencer 
 
 		if (followers == null || followers.isEmpty()) {
 

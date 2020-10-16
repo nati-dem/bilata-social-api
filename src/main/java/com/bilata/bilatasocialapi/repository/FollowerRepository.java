@@ -14,6 +14,5 @@ public interface FollowerRepository extends CrudRepository<Follower, Integer>{
 
 	@Query
 	List<Follower> findByUserId(@Param(value = "userId") int userId);
-	
-	
+		
 }
