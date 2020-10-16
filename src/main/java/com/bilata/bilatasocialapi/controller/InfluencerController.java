@@ -46,9 +46,21 @@ public class InfluencerController {
 		}
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/api/influencers/{userId}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("userId") int userId) {
+
+	@RequestMapping(value = "/api/clients/{company_name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<User>> getClientByName(@PathVariable("company_name") String company_name) {
+        
+       List<User> client = userService.findByCompanyName(company_name);
+    	
+        if (client == null) {
+            return new ResponseEntity<List<User>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<User>>(client, HttpStatus.OK);
+    }
+
+
+@RequestMapping(value = "/api/influencers/{userId}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("id") int userId) {
 
 		List<Follower> followers = followerService.displayByUserId(userId);
 		// follower model required - influencer service - influencer 
