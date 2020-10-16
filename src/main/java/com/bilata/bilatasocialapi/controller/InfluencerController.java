@@ -19,7 +19,9 @@ import com.bilata.bilatasocialapi.service.UserService;
 @RestController
 @CrossOrigin()
 public class InfluencerController {
-
+	
+	// create influencer service 
+	
 	@Autowired
 	UserService userService;
 
@@ -40,10 +42,11 @@ public class InfluencerController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/api/users/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/influencers/{id}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("id") int id) {
 
-		List<User> followers = userService.displayByUserId(id);
+		List<Follower> followers = userService.displayByUserId(id);
+		// follower model required - influencer service - influencer rep
 
 		if (followers == null || followers.isEmpty()) {
 
