@@ -21,9 +21,17 @@ public class UserService {
 	public List<User> findByUsername(String username) {
 		return (List<User>) userRepository.findByUsername(username);
 	}
+
 	
 	public List<User> displayByUserId(int id) {
 		return (List<User>) userRepository.findByUserId(id);
+	}
+
+	public List<User> findByCompanyName(String company_name) {
+
+		List<User> companyList = userRepository.companyName(company_name);
+
+		return companyList;
 	}
 
 }
