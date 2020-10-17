@@ -13,6 +13,6 @@ import com.bilata.bilatasocialapi.model.Follower;
 public interface FollowerRepository extends CrudRepository<Follower, Integer>{
 
 	@Query
-	List<Follower> findByUserId(@Param(value = "userId") int userId);
+	List<Follower> findByUserId(@Param(value = "userId") String userId);
 		
 }

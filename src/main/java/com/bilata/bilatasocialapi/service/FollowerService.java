@@ -14,7 +14,7 @@ public class FollowerService {
 	@Autowired
 	FollowerRepository followerRepository;
 
-	public List<Follower> displayByUserId(int userId) {
+	public List<Follower> displayByUserId(String userId) {
 		return (List<Follower>) followerRepository.findByUserId(userId);
 	}
 
