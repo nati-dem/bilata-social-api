@@ -2,6 +2,7 @@ package com.bilata.bilatasocialapi.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "followers")
 @Table(name = "followers")
 public class Follower {
 	
@@ -20,48 +22,55 @@ public class Follower {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "userId")
-	private String userId;
-	@Column(name = "target_userId")
-	private String target_userId;
+	@Column(name = "user_id")
+	private Integer userId;
+	@Column(name = "target_user_id")
+	private Integer target_user_id;
 	
-	private Set Influencer;
+//    private Set<Influencer> influencers;
 	
-	
+	public Follower() {
+		super();
+	}
+
+	public Follower(Integer id, Integer userId, Integer targetUserId) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.target_user_id = targetUserId;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getUserId() {
+
+public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getTarget_userId() {
-		return target_userId;
-	}
-	public void setTarget_userId(String target_userId) {
-		this.target_userId = target_userId;
+	@Column(name = "target_user_id")
+	public Integer getTarget_user_id() {
+		return target_user_id;
 	}
 	
-	public Set getInfluencer() {
-		return Influencer;
+	public void setTarget_user_id(Integer targetUserId) {
+		this.target_user_id = target_user_id;
 	}
-	public void setInfluencer(Set influencer) {
-		Influencer = influencer;
-	}
-	
-	@ManyToMany
-	@JoinTable(name = "userId",
-	joinColumns = @JoinColumn(name = "userId"),
-	inverseJoinColumns = @JoinColumn(name = "userId"))
-	
+	//	@OneToMany(mappedBy = "followers", cascade = CascadeType.ALL)
+//	public Set<Influencer> getInfluencers() {
+//		return influencers;
+//	}
+//	public void setInfluencers(Set<Influencer> influencers) {
+//		this.influencers = influencers;
+//	}
 	@Override
 	public String toString() {
-		return "Follower [id=" + id + ", userId=" + userId + ", target_userId=" + target_userId + "]";
+		return "Follower [id=" + id + ", userId=" + userId + ", target_userId=" + target_user_id + "]";
 	}
-
+	  
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bilata.bilatasocialapi.model.User;
+import com.bilata.bilatasocialapi.repository.ClientRepository;
 import com.bilata.bilatasocialapi.repository.UserRepository;
 
 @Service
@@ -13,6 +14,9 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	ClientRepository clientRepo;
 
 	public User getUserByUserName(String name) {
 		return userRepository.findByUsername(name);
@@ -29,7 +33,7 @@ public class UserService {
 
 	public List<User> findByCompanyName(String company_name) {
 
-		List<User> companyList = userRepository.companyName(company_name);
+		List<User> companyList = clientRepo.findBycompanyName(company_name);
 
 		return companyList;
 	}

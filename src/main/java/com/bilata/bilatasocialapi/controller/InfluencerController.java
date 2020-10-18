@@ -60,9 +60,9 @@ public class InfluencerController {
 
 
 @RequestMapping(value = "/api/influencers/{userId}/followers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("userId") String userId) {
+	public ResponseEntity<Object> displayFollowersOfInfluencer(@PathVariable("userId") Integer userId) {
 
-		List<Follower> followers = followerService.displayByUserId(userId);
+		List<User> followers = followerService.displayByUserId(userId);
 		// follower model required - influencer service - influencer 
 
 		if (followers == null || followers.isEmpty()) {
