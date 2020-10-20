@@ -16,6 +16,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	//@Query("select * FROM users u JOIN clients c ON u.id = c.user_id WHERE c.company_name = :company_name")
 	//public List<User> companyName(@Param("company_name") String company_name);
 	
-	@Query
-	List<User> findById(@Param(value = "id") int userId);
+	List<User> findById(int userId);
 }
