@@ -3,16 +3,17 @@ package com.bilata.bilatasocialapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.bilata.bilatasocialapi.model.Follower;
 import com.bilata.bilatasocialapi.model.User;
 import com.bilata.bilatasocialapi.service.FollowerService;
@@ -71,4 +72,13 @@ public class InfluencerController {
 		}
 		return new ResponseEntity<>(followers, HttpStatus.OK);
 	}
+@RequestMapping(value = "", method = RequestMethod.POST)
+public ResponseEntity<Void> createUser(@RequestBody Follower follower) {
+
+  
+	followerService.followUser(follower);
+
+    HttpHeaders headers = new HttpHeaders();
+    return new ResponseEntity<Void>(headers, HttpStatus.ACCEPTED);
+}
 }
